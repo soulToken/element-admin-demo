@@ -19,7 +19,7 @@
 	<!--<el-col :span="4">-->
 	<aside style="width:230px;">
 
-<el-menu :default-active="currentPath" class="el-menu-vertical-demo"  :collapse="isCollapse"     background-color="#545c64"   @open="handleopen" @close="handleclose" @select="handleselect"
+<el-menu :default-active="currentPath" class="el-menu-vertical-demo"  :collapse="isCollapse"  text-color="#fff"    active-text-color="#ffd04b"    background-color="#324057"   @open="handleopen" @close="handleclose" @select="handleselect"
 	theme="dark" unique-opened router>
 	<template v-for="(item,index) in $router.options.routes" v-if="!item.hidden">
 		<el-submenu :index="index+''" v-if="!item.leaf"  v-bind:key="index">
@@ -35,16 +35,18 @@
 </aside>
 <!--</el-col>-->
 <!--<el-col :span="20" class="panel-c-c">-->
-<section class="panel-c-c">
+<section class="panel-c-c" :style="{left:width+'px'}">
 	<div class="grid-content bg-purple-light">
 		<el-col :span="24" style="margin-bottom:15px;">
-<strong style="width:200px;float:left;color: #475669;">{{currentPathName}}</strong>
-<el-breadcrumb separator="/" style="float:right;">
-<el-breadcrumb-item :to="{ path: '/table' }">首页</el-breadcrumb-item>
-<el-breadcrumb-item v-if="currentPathNameParent!=''">{{currentPathNameParent}}</el-breadcrumb-item>
-<el-breadcrumb-item v-if="currentPathName!=''">{{currentPathName}}</el-breadcrumb-item>
-</el-breadcrumb>
-</el-col>
+                <i style="float:left;" class="el-icon-d-arrow-left"  v-if="!isCollapse"  @click="isCollapse=!isCollapse">收缩</i>
+                <i style="float:left;" class="el-icon-d-arrow-right" @click="isCollapse=!isCollapse" v-else>展开</i>
+                <strong style="width:200px;float:left;color: #475669;margin-left:20px;">{{currentPathName}}</strong>
+                <el-breadcrumb separator="/" style="float:right;">
+                <el-breadcrumb-item :to="{ path: '/table' }">首页</el-breadcrumb-item>
+                <el-breadcrumb-item v-if="currentPathNameParent!=''">{{currentPathNameParent}}</el-breadcrumb-item>
+                <el-breadcrumb-item v-if="currentPathName!=''">{{currentPathName}}</el-breadcrumb-item>
+                </el-breadcrumb>
+        </el-col>
 <el-col :span="24" style="background-color:#fff;box-sizing: border-box;">
 <!--<transition name="fade">-->
 <router-view></router-view>
@@ -65,6 +67,7 @@ export default {
       currentPathName: "用户列表",
       currentPathNameParent: "国外艾灸",
       userName: "",
+      width:62,
       isCollapse: true,
       form: {
         name: "",
@@ -91,6 +94,13 @@ export default {
       this.currentPath = to.path;
       this.currentPathName = to.name;
       this.currentPathNameParent = to.matched[0].name;
+    },
+    isCollapse(old,news){
+            if(old){
+                this.width=62
+            }else{
+                this.width=230
+            }
     }
   },
   methods: {
