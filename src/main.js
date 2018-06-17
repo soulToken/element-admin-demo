@@ -11,7 +11,10 @@ import router from './router';
 // start mock 将mock数据隐藏
 // import Mock from './mock';
 // Mock.bootstrap();
+//svg 图片的引入
+ import Icon from 'vue-svg-icon/Icon.vue'; 
 
+Vue.component('icon', Icon);
 Vue.use(ElementUI)
 Vue.use(Vuex)
 new Vue({
