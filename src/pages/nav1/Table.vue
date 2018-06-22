@@ -96,7 +96,7 @@
 <script>
 import util from "../../common/util";
 import NProgress from "nprogress";
-import { getUserListPage, removeUser, editUser, addUser } from "../../api/api";
+import { getUserListPage, removeUser, editUser, addUser ,mock} from "../../api/api";
 
 export default {
   data() {
@@ -127,6 +127,12 @@ export default {
         name: [{ required: true, message: "请输入姓名", trigger: "blur" }]
       }
     };
+  },
+  mounted:function(){
+    // this.getUsers();
+       mock().then(function(res){
+           console.log(res.data)
+       })
   },
   methods: {
     formatTen(num) { 
@@ -329,9 +335,9 @@ export default {
       this.editForm.mobile = "";
     }
   },
-  mounted() {
-    this.getUsers();
-  }
+//   mounted() {
+//     this.getUsers();
+//   }
 };
 </script>
 

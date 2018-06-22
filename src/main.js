@@ -9,7 +9,7 @@ import router from './router';
 // import axios from 'axios'
 // Vue.prototype.$http=axios
 // start mock 将mock数据隐藏
-// import Mock from './mock';
+import Mock from './mock';
 // Mock.bootstrap();
 
 Vue.use(ElementUI)

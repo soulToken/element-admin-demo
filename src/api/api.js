@@ -2,7 +2,8 @@ import axios from 'axios';
 
 // 这边是所有的请求接口的配置文件，不同环境修改 这个 base 就好了， 包括正式环境 也是修改 这里面（在这里测试一下 登录接口， 我随便用了之前项目的一个接口）  下面的都是 promise 语法，在其他组件里面调用就行了
 // let base='http://192.168.1.55:8080/apis'
-let base="http://13.250.177.118/ManagerServer"
+// let base="http://13.250.177.118/ManagerServer"
+let base="/apis"
 
 export const requestLogin = params => { return axios.post(`${base}/login`, params).then(res => res.data); };
 
@@ -16,6 +17,13 @@ export const removeUser = params => { return axios.get(`${base}/user/remove`, { 
 export const editUser = params => { return axios.get(`${base}/user/edit`, { params: params }); };
 
 export const addUser = params => { return axios.get(`${base}/user/add`, { params: params }); };
+
+//测试mock接口    axios.get('msg').then(res=>{
+
+       
+
+export const mock = params => { return axios.get(`${base}/msg`, { params: params }); };
+
 
 //登陆接口
 export const gettest = params => { return axios.post(`${base}/moxIntlBlackGround/manager/checkLogin`, params); };
