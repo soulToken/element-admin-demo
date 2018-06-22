@@ -2,6 +2,9 @@
 	<el-row class="panel">
 		<el-col :span="24" class="panel-top">
 			<el-col :span="20" style="font-size:26px;">
+
+
+        <icon name="生活" scale="20" width="50" height="50"></icon>
 <img src="../assets/logo4.png" class="logo"> <span>AD<i style="color:#20a0ff">MIN</i>
 </span>
 </el-col>
